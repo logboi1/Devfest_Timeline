@@ -1,22 +1,23 @@
-// Import the functions you need from the SDKs you need
-import {initializeApp} from 'firebase/app';
-import {getAnalytics} from 'firebase/analytics';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
-import {getAuth} from 'firebase/auth';
+export const _signInWithGoogle = async () => {
+  try {
+    GoogleSignin.configure({
+      offlineAccess: false,
+      webClientId:
+        '843375373608-03ppma65hh2om8bs9umehdrokrgtaivo.apps.googleusercontent.com',
+      scopes: ['profile', 'email'],
+    });
+    await GoogleSignin.hasPlayServices();
+    const userInfo = await GoogleSignin.signIn();
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyDy5G4QM-42Sp-3YoFBJ_z4ikUHLCaI_xc',
-  authDomain: 'devfest23.firebaseapp.com',
-  projectId: 'devfest23',
-  storageBucket: 'devfest23.appspot.com',
-  messagingSenderId: '191016265955',
-  appId: '1:191016265955:web:7d8ecbfda4c8e24a77fdd6',
-  measurementId: 'G-1TMVDW52WZ',
+    const {idToken} = await GoogleSignin.signIn();
+    const googleCredentials = auth.GoogleAuthProvider.credential(idToken);
+    auth().signInWithCredential(googleCredentials);
+    return userInfo;
+  } catch (error) {
+    console.log('=> Google Sign In', error);
+    return null;
+  }
 };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-// Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);

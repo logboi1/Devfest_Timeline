@@ -1,6 +1,6 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet, Linking, TouchableOpacity} from 'react-native';
 import MainLayout from '../components/layout';
 import MediumText from '../utils/mediumText';
 import Avatar from '../components/avatar';
@@ -10,10 +10,40 @@ import BoldText from '../utils/boldText';
 import {useTheme} from '../utils/theme';
 import ClickCard from '../components/card';
 import Slideshow from '../components/slideshow';
+import CustomAlert from '../components/customAlert';
+import useStore from '../../store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // create a component
 const Dashboard = ({navigation}) => {
+  const userProfile = useStore(state => state.userProfile);
+  const setUserProfile = useStore(state => state.setUserProfile);
+  const setUserAuthorized = useStore(state => state.setUserAuthorized);
+
+  const [alertVisible, setAlertVisible] = useState(false);
+
   const colors = useTheme();
+
+  const showSignOut = () => {
+    setAlertVisible(true);
+  };
+
+  const SignOut = () => {
+    setAlertVisible(false);
+    navigation.navigate('Signin');
+  };
+
+  const handleLogout = async () => {
+    try {
+      // Clear the user token from AsyncStorage during sign-out
+      await AsyncStorage.removeItem('userObject');
+      // Redirect the user to the login screen
+      setUserAuthorized(false);
+      navigation.navigate('Signin');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   const GotoTimeline = () => {
     navigation.navigate('timeline');
@@ -22,17 +52,28 @@ const Dashboard = ({navigation}) => {
     navigation.navigate('questions');
   };
   const GotoRSVP = () => {
-    navigation.navigate('Dashboard');
+    Linking.openURL('https://bit.ly/devfestado23').catch(err =>
+      console.error('An error occurred: ', err),
+    );
   };
   const GotoSocialMedia = () => {
     navigation.navigate('socialmedia');
   };
+
+  const GotoAllQuestions = () => {
+    navigation.navigate('viewquestions');
+  };
+
   return (
     <MainLayout>
       <View style={styles.dashboard}>
         <View style={styles.topbar}>
-          <BoldText customStyle={styles.greeting}>Hi, Ibraheem O.</BoldText>
-          <Avatar size={40} source={images.splashImage} />
+          <BoldText customStyle={styles.greeting}>
+            Hi, {userProfile?.displayName}
+          </BoldText>
+          <TouchableOpacity onPress={showSignOut}>
+            <Avatar size={40} source={{uri: userProfile?.photoURL}} />
+          </TouchableOpacity>
         </View>
         <View style={styles.content}>
           <MediumText customStyle={styles.ekaabo}>
@@ -46,7 +87,7 @@ const Dashboard = ({navigation}) => {
           <View style={styles.col}>
             <ClickCard
               title={'Order of Event'}
-              description={'List of Events and it timelines'}
+              description={'List of Events, Speakers and it timelines'}
               onPress={GotoTimeline}
             />
 
@@ -54,6 +95,11 @@ const Dashboard = ({navigation}) => {
               title={'Have A Question?'}
               description={'Submit your questions here'}
               onPress={GotoQuestion}
+            />
+            <ClickCard
+              title={'View Questions'}
+              description={'Get all Submitted question'}
+              onPress={GotoAllQuestions}
             />
 
             <ClickCard
@@ -70,6 +116,15 @@ const Dashboard = ({navigation}) => {
           </View>
         </View>
       </View>
+
+      <CustomAlert
+        visible={alertVisible}
+        title={'Hmmm'}
+        btntitle={'Sign out'}
+        type="fail"
+        message="Bye Bye to swags and fun"
+        onClose={handleLogout}
+      />
     </MainLayout>
   );
 };
@@ -79,17 +134,20 @@ const styles = StyleSheet.create({
   dashboard: {
     paddingTop: RFValue(10),
   },
+  greeting: {
+    fontSize: RFValue(13),
+  },
   topbar: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'baseline',
+    alignItems: 'center',
   },
   content: {
-    marginTop: RFValue(20),
+    marginTop: RFValue(10),
   },
   ekaabo: {
-    fontSize: RFValue(15),
+    fontSize: RFValue(12),
     textAlign: 'center',
     marginBottom: RFValue(10),
   },

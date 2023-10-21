@@ -12,8 +12,10 @@ const ClickCard = ({title, description, onPress}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.card, {backgroundColor: colors.accent}]}>
-        <BoldText>{title}</BoldText>
-        <RegularText>{description}</RegularText>
+        <BoldText customStyle={{fontSize: RFValue(14)}}>{title}</BoldText>
+        <RegularText customStyle={{fontSize: RFValue(10)}}>
+          {description}
+        </RegularText>
       </View>
     </TouchableOpacity>
   );
@@ -22,7 +24,7 @@ const ClickCard = ({title, description, onPress}) => {
 // define your styles
 const styles = StyleSheet.create({
   card: {
-    height: RFValue(80),
+    height: RFValue(60),
     borderRadius: RFValue(10),
     display: 'flex',
     justifyContent: 'center',

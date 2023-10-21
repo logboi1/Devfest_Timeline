@@ -1,36 +1,58 @@
 export const timelineData = [
   {
-    date: '2023-10-20T09:00:00', // Use a specific date and time for the event
+    date: '2023-10-20T09:00:00',
     time: '09:00 AM',
-    title: 'Talk',
-    description:
-      'To mark an event as "passed" based on the current time, you can compare the events date with the current time and set the passed property accordingly',
-    speakers: 'Paul Lion, John Doe',
-    passed: new Date() > new Date('2023-10-20T03:00:00'),
+    title: 'Registration & Welcome',
+    description: 'Welcome participants and registration for the event.',
+    speakers: 'Event Organizers',
+    passed: new Date() > new Date('2023-10-21T09:00:00'),
   },
   {
-    date: '2023-10-23T14:30:00', // Use a specific date and time for the event
-    time: '09:00 AM',
-    title: 'Talk',
-    description: 'Milestone 1',
-    speakers: 'Paul Lion',
-    passed: new Date() > new Date('2023-10-23T14:30:00'),
+    date: '2023-10-20T09:30:00',
+    time: '09:30 AM',
+    title: 'Opening Keynote',
+    description: 'An inspiring keynote to kickstart the event.',
+    speakers: 'Keynote Speaker',
+    passed: new Date() > new Date('2023-10-21T09:30:00'),
   },
   {
-    date: '2023-10-25T16:00:00', // Use a specific date and time for the event
-    time: '09:00 AM',
-    title: 'Talk',
-    description: 'Milestone 2',
-    speakers: 'Paul Lion',
-    passed: new Date() > new Date('2023-10-25T16:00:00'),
+    date: '2023-10-20T10:30:00',
+    time: '10:30 AM',
+    title: 'Breakout Sessions',
+    description: 'Multiple sessions on various tech topics.',
+    speakers: 'Various Speakers',
+    passed: new Date() > new Date('2023-10-21T10:30:00'),
   },
   {
-    date: '2023-10-27T10:45:00', // Use a specific date and time for the event
-    time: '09:00 AM',
-    title: 'Talk',
-    description: 'Milestone 3',
-    speakers: 'Paul Lion',
-    passed: new Date() > new Date('2023-10-27T10:45:00'),
+    date: '2023-10-20T12:00:00',
+    time: '12:00 PM',
+    title: 'Lunch Break',
+    description: 'Enjoy a delicious lunch and network with fellow attendees.',
+    speakers: 'Networking',
+    passed: new Date() > new Date('2023-10-21T12:00:00'),
   },
-  // Add more milestones as needed
+  {
+    date: '2023-10-20T13:00:00',
+    time: '01:00 PM',
+    title: 'Afternoon Keynote',
+    description: 'Another insightful keynote in the afternoon session.',
+    speakers: 'Keynote Speaker',
+    passed: new Date() > new Date('2023-10-21T13:00:00'),
+  },
+  {
+    date: '2023-10-20T14:00:00',
+    time: '02:00 PM',
+    title: 'Panel Discussion',
+    description: 'A panel discussion on current tech trends and challenges.',
+    speakers: 'Panelists',
+    passed: new Date() > new Date('2023-10-21T14:00:00'),
+  },
+  {
+    date: '2023-10-20T15:00:00',
+    time: '03:00 PM',
+    title: 'Closing Remarks & Networking',
+    description: 'Wrap up the event and network with fellow tech enthusiasts.',
+    speakers: 'Event Organizers',
+    passed: new Date() > new Date('2023-10-21T15:00:00'),
+  },
 ];

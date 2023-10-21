@@ -10,13 +10,18 @@ import RegularText from '../utils/regularText';
 import TopBar from '../components/topbar';
 
 // create a component
-const EventTimelines = () => {
+const EventTimelines = ({navigation}) => {
   return (
-    <MainLayout topBar={<TopBar showBack title={'Event Timelines'} />}>
+    <MainLayout
+      topBar={
+        <TopBar showBack title={'Event Timelines'} navigation={navigation} />
+      }>
       <View style={styles.container}>
-        <BoldText customStyle={styles.header}>Devfest Timelines</BoldText>
+        {/* <BoldText customStyle={styles.header}>Devfest Timelines</BoldText> */}
         <RegularText>Click on timeline to see details</RegularText>
-        <ScrollView>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{paddingBottom: RFValue(30), marginBottom: RFValue(30)}}>
           <Timeline data={timelineData} />
         </ScrollView>
       </View>

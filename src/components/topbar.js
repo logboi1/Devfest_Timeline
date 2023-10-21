@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, TouchableOpacity, useColorScheme} from 'react-native';
 import {RFValue} from 'react-native-responsive-fontsize';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {useTheme} from '../utils/theme';
 import RegularText from '../utils/regularText';
 import BoldText from '../utils/boldText';
@@ -28,8 +28,7 @@ const TopBar = ({showBack = false, step, title, navigation}) => {
       }}>
       {showBack && (
         <TouchableOpacity delayPressIn={0} onPress={handleBackPress}>
-          {/* <Icon name="chevron-back" size={20} color={colors.text} /> */}
-          <RegularText>back</RegularText>
+          <Icon name="chevron-back" size={20} color={colors.text} />
         </TouchableOpacity>
       )}
       <BoldText customStyle={{fontSize: RFValue(12), marginLeft: RFValue(-20)}}>

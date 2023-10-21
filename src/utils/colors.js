@@ -4,6 +4,7 @@ export const darkColors = {
   accent: '#BC6C25',
   splash: '#000',
   splashText: '#fff',
+  placeholder: 'grey',
 };
 
 export const lightColors = {
@@ -12,4 +13,5 @@ export const lightColors = {
   accent: '#BC6C25',
   splash: '#fff',
   splashText: '#000',
+  placeholder: 'grey',
 };

@@ -6,6 +6,7 @@ import Dashboard from '../screens/dashboard';
 import EventTimelines from '../screens/EventTimeline';
 import QuestionScreen from '../screens/question';
 import SocialMedia from '../screens/socialMedia';
+import ViewQuestions from '../screens/questionView';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -18,6 +19,7 @@ const Navigation = () => {
         <Stack.Screen name="timeline" component={EventTimelines} />
         <Stack.Screen name="questions" component={QuestionScreen} />
         <Stack.Screen name="socialmedia" component={SocialMedia} />
+        <Stack.Screen name="viewquestions" component={ViewQuestions} />
       </Stack.Navigator>
     </NavigationContainer>
   );

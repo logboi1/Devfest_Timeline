@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   defaultStyles: {
     fontFamily: 'Poppins-Bold',
     fontSize: RFValue(16),
-    fontWeight: '700',
+    fontWeight: '600',
   },
 });
 

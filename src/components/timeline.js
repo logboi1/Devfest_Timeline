@@ -37,7 +37,7 @@ const Timeline = ({data}) => {
             style={[
               styles.verticalLine,
               {backgroundColor: colors.accent},
-              expandedMilestone && styles.increaseVerticalLine,
+              expandedMilestone === i && styles.increaseVerticalLine,
             ]}></View>
           <View style={[styles.detail, {backgroundColor: colors.accent}]}>
             <View style={styles.header}>
@@ -76,27 +76,29 @@ const styles = StyleSheet.create({
     width: RFValue(20),
     height: RFValue(20),
     borderRadius: RFValue(30),
-    backgroundColor: 'transparent',
-    marginRight: RFValue(20),
+    backgroundColor: '#2b2b2b',
+    marginRight: RFValue(10),
     borderWidth: RFValue(3),
     borderColor: '#BC6C25',
   },
   passedIndicator: {
-    backgroundColor: '#BC6C25', // Change to your desired color for passed milestones
+    backgroundColor: 'white', // Change to your desired color for passed milestones
+    // borderColor: 'green',
   },
   date: {
-    fontSize: 15,
+    fontSize: 10,
   },
   title: {
-    fontSize: 18,
+    fontSize: 12,
   },
   description: {
     flex: 1,
-    fontSize: 14,
+    fontSize: RFValue(12),
   },
   alaaye: {
     textAlign: 'justify',
-    marginBottom: RFValue(12),
+    marginBottom: RFValue(10),
+    fontSize: RFValue(12),
   },
   detail: {
     width: SIZES.width * 0.8,
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
     borderRadius: RFValue(10),
   },
   increaseVerticalLine: {
-    // height: RFValue(0),
+    height: RFValue(140),
   },
 });
 

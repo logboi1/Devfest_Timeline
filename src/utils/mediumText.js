@@ -27,7 +27,7 @@ const MediumText = ({selectable, customStyle, children, customColor}) => {
 // define your styles
 const styles = StyleSheet.create({
   defaultStyles: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Poppins-Medium',
     fontSize: RFValue(14),
     fontWeight: '500',
   },

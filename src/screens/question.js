@@ -2,13 +2,19 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import MainLayout from '../components/layout';
+import AskQuestionPage from '../components/askaquestion';
+import {timelineData} from '../data/timelinedat';
+import TopBar from '../components/topbar';
 
 // create a component
-const QuestionScreen = () => {
+const QuestionScreen = ({navigation}) => {
   return (
-    <MainLayout>
+    <MainLayout
+      topBar={
+        <TopBar showBack navigation={navigation} title={'Ask A Question'} />
+      }>
       <View style={styles.container}>
-        <Text>QuestionScreen</Text>
+        <AskQuestionPage timelineData={timelineData} navigation={navigation} />
       </View>
     </MainLayout>
   );
@@ -16,11 +22,7 @@ const QuestionScreen = () => {
 
 // define your styles
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  container: {},
 });
 
 //make this component available to the app

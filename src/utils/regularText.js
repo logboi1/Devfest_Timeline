@@ -27,7 +27,7 @@ const RegularText = ({selectable, customStyle, children, customColor}) => {
 // define your styles
 const styles = StyleSheet.create({
   defaultStyles: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Poppins-Regular',
     fontSize: RFValue(12),
     fontWeight: '400',
   },
