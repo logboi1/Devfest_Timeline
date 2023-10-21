@@ -1,5 +1,5 @@
 const images = {
-  splashImage: require('../assets/gdg.png'),
+  splashImage: require('../assets/gdglive.png'),
   logo: require('../assets/logo.png'),
   // Add more image paths here
 };
